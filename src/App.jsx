@@ -1,6 +1,8 @@
 import { useState } from "react";
 import SearchBar from "./components/SearchBar";
-import WeatherDisplay from "./components/WeatherDisplay"; // Jangan lupa import ini juga
+import WeatherDisplay from "./components/WeatherDisplay"; 
+import ErrorMessage from "./assets/message/not-found.png";
+import SearchImg from "./assets/message/search-city.png";
 
 const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
 
@@ -84,10 +86,17 @@ function App() {
           onSearch={() => fetchWeatherData(city)}
           onLocationClick={handleLocationClick}
         />
+        <div className=" flex flex-col items-center gap-4 mt-6">
+          <img src={SearchImg} alt="Search Image" className="w-40" />
+          <h4 className="font-bold">Search City</h4>
+        </div>
+
         <div className="mt-6">
           {loading && <p className="text-center">Loading...</p>}
-          {error && <p className="text-center text-red-400 bg-red-900/50 p-3 rounded-lg">{error}</p>}
-          {/* Cek jika weatherData ada dan error tidak ada sebelum render WeatherDisplay */}
+          {error && (<div className="text-center flex flex-col items-center gap-4">
+          <img src={ErrorMessage} alt="Not Found" className="w-40" />
+          <p className="text-red-400 bg-red-900/50 p-3 rounded-lg">{error}</p>
+          </div>)}
           {weatherData && !error && <WeatherDisplay data={weatherData} />}
         </div>
       </div>
