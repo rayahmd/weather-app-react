@@ -85,14 +85,14 @@ function App() {
           onLocationClick={handleLocationClick}
         />
         {!loading && !error && !weatherData && (
-          <div className="flex flex-col items-center gap-4 mt-6 text-center opacity-70">
+          <div className="flex flex-col items-center gap-4 mt-6 text-center">
             <img src={SearchImg} alt="Search Image" className="w-40" />
-            <h4 className="font-bold">Search City</h4>
+            <h4 className="font-bold text-xl">Search City</h4>
           </div>
         )}
 
         <div className="mt-6">
-          {loading && <p className="text-center">Loading...</p>}
+          {loading && <p className="text-center text-xl">Loading...</p>}
           {error && (<div className="text-center flex flex-col items-center gap-4">
           <img src={ErrorMessage} alt="Not Found" className="w-40" />
           <p className="text-red-400 bg-red-900/50 p-3 rounded-lg">{error}</p>
