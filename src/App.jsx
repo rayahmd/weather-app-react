@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SearchBar from "./components/searchbar";
+import SearchBar from "./components/SearchBar";
 import WeatherDisplay from "./components/WeatherDisplay"; // Jangan lupa import ini juga
 
 const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
