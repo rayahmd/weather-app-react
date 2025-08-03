@@ -36,7 +36,6 @@ function App() {
     }
   };
 
-  // PINDAHKAN FUNGSI INI KE DALAM APP
   const fetchWeatherByCoords = async (lat, lon) => {
     setLoading(true);
     setError(null);
@@ -58,8 +57,7 @@ function App() {
       setLoading(false);
     }
   };
-  
-  // PINDAHKAN FUNGSI INI JUGA KE DALAM APP
+
   const handleLocationClick = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -86,10 +84,12 @@ function App() {
           onSearch={() => fetchWeatherData(city)}
           onLocationClick={handleLocationClick}
         />
-        <div className=" flex flex-col items-center gap-4 mt-6">
-          <img src={SearchImg} alt="Search Image" className="w-40" />
-          <h4 className="font-bold">Search City</h4>
-        </div>
+        {!loading && !error && !weatherData && (
+          <div className="flex flex-col items-center gap-4 mt-6 text-center opacity-70">
+            <img src={SearchImg} alt="Search Image" className="w-40" />
+            <h4 className="font-bold">Search City</h4>
+          </div>
+        )}
 
         <div className="mt-6">
           {loading && <p className="text-center">Loading...</p>}
